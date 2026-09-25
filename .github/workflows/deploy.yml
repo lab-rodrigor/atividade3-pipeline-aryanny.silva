@@ -37,6 +37,7 @@ jobs:
 
       - name: Criar redes e volume
         run: |
+          ssh -i ~/.ssh/deploy gr-${{ env.SLUG }}@gr.lab.ayty.org gr-docker volume rm pgdata || true
           ssh -i ~/.ssh/deploy gr-${{ env.SLUG }}@gr.lab.ayty.org gr-docker network create dados --interna || true
           ssh -i ~/.ssh/deploy gr-${{ env.SLUG }}@gr.lab.ayty.org gr-docker network create web || true
           ssh -i ~/.ssh/deploy gr-${{ env.SLUG }}@gr.lab.ayty.org gr-docker volume create pgdata || true
