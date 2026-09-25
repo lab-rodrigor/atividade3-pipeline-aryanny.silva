@@ -26,11 +26,7 @@ jobs:
 
       - name: Derrubar a topologia antiga
         run: |
-          ssh -i ~/.ssh/deploy gr-${{ env.SLUG }}@gr.lab.ayty.org gr-docker rm -f front || true
-          ssh -i ~/.ssh/deploy gr-${{ env.SLUG }}@gr.lab.ayty.org gr-docker rm -f api || true
-          ssh -i ~/.ssh/deploy gr-${{ env.SLUG }}@gr.lab.ayty.org gr-docker rm -f banco || true
-          ssh -i ~/.ssh/deploy gr-${{ env.SLUG }}@gr.lab.ayty.org gr-docker network rm web || true
-          ssh -i ~/.ssh/deploy gr-${{ env.SLUG }}@gr.lab.ayty.org gr-docker network rm dados || true
+          ssh -i ~/.ssh/deploy gr-${{ env.SLUG }}@gr.lab.ayty.org gr-docker down || true
 
       - name: Criar redes e volume
         run: |
